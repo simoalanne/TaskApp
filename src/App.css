@@ -1,0 +1,25 @@
+nav ul {
+  background-color: #333;
+  padding: 15px;
+  list-style: none;
+  margin: 0;
+  display: flex;
+  gap: 20px;
+}
+
+nav li a {
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+}
+
+nav ul li a.active {
+  border-bottom: 2px solid gold;
+  color: gold;
+
+}
+
+nav ul li a:hover {
+  color: gold;
+  border-bottom: 2px solid gold;
+}
