@@ -1,9 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import ToggleTaskActivityButton from "./ToggleTaskActivivityButton";
 import "./TaskList.css";
 import axios from "axios";
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from '@mui/icons-material/Edit';
+import MultiSelect from "./MultiSelect";
 
 const TaskList = () => {
   const [tasks, setTasks] = useState([]);
@@ -46,11 +48,23 @@ const TaskList = () => {
         timestamp: stamp.timestamp,
         type: stamp.type,
       }));
-    console.log(task);
   });
 
   const handleDoubleclick = (id) => {
     console.log("doubleclicked task with id", id);
+  };
+
+  const filterSelection = (selectedTags) => {
+    if (selectedTags.length < 1) {
+      setTasks(tasks);
+      return;
+    }
+
+    setTasks(() =>
+      tasks.filter(task =>
+        selectedTags.every(tag => task.tagNames.includes(tag))
+      )
+    );
   };
 
   const updateTimeStamps = async (timestamp, task, type) => {
@@ -75,10 +89,11 @@ const TaskList = () => {
     await axios.delete(`http://localhost:3010/tasks/${id}`);
     setTasks(() => tasks.filter(task => task.id !== id));
   };
-    
+
 
   return (
     <>
+      <MultiSelect filterSelection={filterSelection} tags={tags} />
       <ul className="container">
         {tasks.map((task) => (
           <li key={task.id} className="tasks">
@@ -106,6 +121,9 @@ const TaskList = () => {
                 </ul>
                 <Button onClick={() => deleteTask(task.id)} variant="outlined" startIcon={<DeleteIcon />}>
                   Poista
+                </Button>
+                <Button onClick={() => openEditTask(task.id)} variant="outlined" startIcon={<EditIcon />}>
+                  Muokkaa
                 </Button>
               </div>
             </button>

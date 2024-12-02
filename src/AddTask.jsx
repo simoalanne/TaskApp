@@ -29,7 +29,7 @@ const AddTask = () => {
       tagIds.push(res.data.id);
     }
 
-    await axios.post("http://localhost:3010/tasks", {name: taskName, tags: tagIds.join(",")});
+    const res = await axios.post("http://localhost:3010/tasks", {name: taskName, tags: tagIds.join(",")});
     navigate("/");
 
   };

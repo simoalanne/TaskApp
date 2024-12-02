@@ -41,8 +41,6 @@ const App = () => {
             </li>
           </ul>
         </nav>
-
-        {/* Routes */}
         <Routes>
           <Route path="/" element={<TaskList />} />
           <Route path="/lisaa-tehtava" element={<AddTask />} />
