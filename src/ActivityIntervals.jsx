@@ -47,10 +47,12 @@ const ActivityIntervals = ({ tasks, timestamps }) => {
     });
     return (
       <ul>
+        <strong>
           <li className="intervals-header">
             <span>Aloitettu </span>
             <span>Lopetettu</span>
           </li>
+        </strong>
         {intervals}
       </ul>
     );

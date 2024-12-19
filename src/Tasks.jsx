@@ -39,7 +39,7 @@ const Tasks = ({
     const newTags = tagNames.filter(
       (tagName) => !tags.some((tag) => tag.name === tagName)
     );
-    
+
     const res = await Promise.all(
       newTags.map((tagName) => addData("/tags", { name: tagName }))
     );
@@ -184,6 +184,7 @@ const Tasks = ({
             variant="contained"
             sx={{ backgroundColor: "lime", width: "200px", color: "black" }}
             onClick={() => setTaskDialogOpen(true)}
+            startIcon={<AddIcon />}
           >
             Uusi tehtävä
           </Button>

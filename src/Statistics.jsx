@@ -12,7 +12,7 @@ import TotalActiveTimes from "./TotalActiveTimes";
 import BarChart from "./Barchart";
 import "./Statistics.css";
 import { useTheme } from "@emotion/react";
-import OpenFeatureButton from "../OpenFeatureButton";
+import OpenFeatureButton from "./OpenFeatureButton";
 
 const Statistics = ({ tasks, timestamps, tags }) => {
   const [selectedFeature, setSelectedFeature] = useState("");
