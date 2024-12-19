@@ -47,7 +47,6 @@ const ToggleTaskActivityButton = ({
     setIsActive((prev) => {
       const newState = !prev;
       const timestamp = dayjs().format("YYYY-MM-DD HH:mm:ss.SSS");
-      "timestamp on", timestamp);
       updateTimeStamps(timestamp, taskId, newState, setTimestamps);
       return newState;
     });
@@ -55,8 +54,10 @@ const ToggleTaskActivityButton = ({
 
   return (
     <div className="toggleTaskButton">
-      <p>{isActive ? "Tehtävä Aktiivinen ✅" : "Tehtävä Inaktiivinen ❌"}</p>
-      <Switch checked={isActive} onChange={handleChange} />
+      <p style={{fontSize: "1.25rem"}}>
+        <strong>{isActive ? "Tehtävä aktiivinen ⏱️" : "Tehtävä ei aktiivinen ❌"}</strong>
+      </p>
+      <Switch checked={isActive} onChange={handleChange} name="toggle-task-activity" inputProps = {{ "aria-label": "aktivoi tehtävä" }} />	
     </div>
   );
 };

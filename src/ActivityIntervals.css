@@ -21,3 +21,9 @@
   margin: 0;
   border-bottom: 1px solid #ddd;
 }
+
+.intervals-header {
+  display: flex;
+  justify-content: flex-start;
+  gap: 92px;
+}

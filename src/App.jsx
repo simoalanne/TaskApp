@@ -48,7 +48,7 @@ const App = () => {
   const fetchAndSet = async (url, setFunction) => {
     try {
       const data = await fetchData(url);
-      setFunction((prevData) => [...prevData, ...data]);
+      setFunction(data);
     } catch (err) {
       console.error(`Failed to fetch from ${url}:`, err);
     }

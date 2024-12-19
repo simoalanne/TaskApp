@@ -41,7 +41,7 @@ const TaskFilterDialog = ({ tags, setFiltering }) => {
     <>
       <Button
         variant="contained"
-        sx={{ backgroundColor: "orange", borderRadius: 0, width: "200px" }}
+        sx={{ backgroundColor: "orange", borderRadius: 0, width: "200px", color: "black" }}
         disabled={tags?.length === 0}
         onClick={() => setIsOpen(true)}
         startIcon={<TuneIcon />}

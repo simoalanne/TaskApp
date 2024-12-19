@@ -107,6 +107,7 @@ const TaskDialog = ({ open, onClose, onSubmit, task, taskNames, tags }) => {
           fullWidth
           required
           variant="standard"
+          autoComplete="off"
           sx={{ marginBottom: "16px" }}
         />
         {Array.from({ length: 3 }).map((_, index) => (

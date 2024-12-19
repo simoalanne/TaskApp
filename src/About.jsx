@@ -59,7 +59,7 @@ const About = () => {
       </div>
       <div className={sectionName}>
         <h3>Harkoitustyöhön käytetty työtuntimäärä:</h3>
-        <p>60 h</p>
+        <p>65 h</p>
       </div>
       <div className={sectionName}>
         <h3>Vaikeimmat ominaisuudet:</h3>

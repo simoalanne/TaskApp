@@ -17,13 +17,13 @@ const ToggleAlternativeMode = ({ alternative, setAlternative }) => {
         }
       >
         <FormGroup>
-          <FormLabel id="theme-label">Vaihda tilaa</FormLabel>
+          <FormLabel id="vaihtoehtoinen-tila">Vaihda tilaa</FormLabel>
           <FormControlLabel
             control={
               <Checkbox
                 checked={alternative === 1}
                 onChange={() => setAlternative(alternative === 0 ? 1 : 0)}
-                name="alternativeMode"
+                name="vaihtoehtoinen-tila"
                 color="primary"
               />
             }

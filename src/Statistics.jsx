@@ -12,21 +12,11 @@ import TotalActiveTimes from "./TotalActiveTimes";
 import BarChart from "./Barchart";
 import "./Statistics.css";
 import { useTheme } from "@emotion/react";
+import OpenFeatureButton from "../OpenFeatureButton";
 
 const Statistics = ({ tasks, timestamps, tags }) => {
   const [selectedFeature, setSelectedFeature] = useState("");
   const theme = useTheme();
-  const FeatureButton = ({ onClick, text }) => {
-    return (
-      <Button
-        variant="contained"
-        sx={{ borderRadius: 0, margin: "8px", width: "200px" }}
-        onClick={onClick}
-      >
-        {text}
-      </Button>
-    );
-  };
 
   const RenderFeature = () => {
     if (selectedFeature === "Aktiivisuusajat") {
@@ -80,15 +70,15 @@ const Statistics = ({ tasks, timestamps, tags }) => {
           </p>
         </div>
         <div className="buttonContainer">
-          <FeatureButton
+          <OpenFeatureButton
             onClick={() => setSelectedFeature("Aktiivisuusajat")}
             text="Aktiivisuusajat"
           />
-          <FeatureButton
+          <OpenFeatureButton
             onClick={() => setSelectedFeature("Intervallit")}
             text="Intervallit"
           />
-          <FeatureButton
+          <OpenFeatureButton
             onClick={() => setSelectedFeature("Pylväsdiagrammi")}
             text="Pylväsdiagrammi"
           />

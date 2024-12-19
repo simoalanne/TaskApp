@@ -50,8 +50,7 @@ const MoveTaskButtons = ({
   };
 
   const getMoveTaskIcon = (direction) => {
-    // less than 739px means only one task item fits per row
-    const twoTasksPerRow = viewportWidth > 739;
+    const twoTasksPerRow = viewportWidth > 696;
     if (twoTasksPerRow) {
       if (direction === "left") {
         return <ArrowCircleLeftIcon style={{ fontSize: 40 }} />;
@@ -75,7 +74,7 @@ const MoveTaskButtons = ({
     <div
       style={{
         display: "flex",
-        marginTop: "20px",
+        marginTop: "10px",
         justifyContent: "space-around",
       }}
     >
@@ -83,11 +82,13 @@ const MoveTaskButtons = ({
         disabled={currentIndex === 0}
         onClick={() => moveTask("left")}
         startIcon={getMoveTaskIcon("left")}
+        aria-label={`liikuta tehtävää ${task.name} vasemmalle`}
       />
       <Button
         disabled={currentIndex === tasks.length - 1}
         onClick={() => moveTask("right")}
         startIcon={getMoveTaskIcon("right")}
+        aria-label={`liikuta tehtävää ${task.name} oikealle`}
       />
     </div>
   );

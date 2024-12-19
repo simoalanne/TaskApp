@@ -182,7 +182,7 @@ const Tasks = ({
           <h3>Ei tehtäviä </h3>
           <Button
             variant="contained"
-            sx={{ backgroundColor: "green", width: "200px" }}
+            sx={{ backgroundColor: "lime", width: "200px", color: "black" }}
             onClick={() => setTaskDialogOpen(true)}
           >
             Uusi tehtävä
@@ -219,7 +219,8 @@ const Tasks = ({
           variant="contained"
           sx={{
             borderRadius: "0px",
-            backgroundColor: "green",
+            backgroundColor: "lime",
+            color: "black",
             width: "200px",
             marginLeft: "16px",
           }}
@@ -268,7 +269,7 @@ const Tasks = ({
               layout
             >
               <div className="taskContent">
-                <p className={theme.palette.mode === "light" ? "taskNameLight" : "taskNameDark"}>{task.name}</p>
+                <strong><p className={theme.palette.mode === "light" ? "taskNameLight" : "taskNameDark"}>{task.name}</p></strong>
                 <ToggleTaskActivityButton
                   taskId={task.id}
                   checked={getTimestamps(task, stamps)?.lastType} // lastType returns the last value of the timestamps array.
@@ -287,7 +288,7 @@ const Tasks = ({
                   />
                   <Button
                     onClick={() => openEditTask(task.id)}
-                    variant="outlined"
+                    variant="contained"
                     startIcon={<EditIcon />}
                   >
                     Muokkaa

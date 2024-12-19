@@ -62,8 +62,8 @@ const TotalActiveTimes = ({ tasks, timestamps, tags }) => {
     }
 
     return (
-      <ul className="totalTimesList">
-        <p>Tehtävien aktiiviset ajat:</p>
+      <ul style={{marginTop: "20px"}} className="totalTimesList">
+        <li><strong>Tehtävien aktiiviset ajat:</strong></li>
         {nameAndTimeList.length === 0 ? (
           <li>Ei aktiivisuutta valitulla aikavälillä</li>
         ) : (
@@ -73,7 +73,7 @@ const TotalActiveTimes = ({ tasks, timestamps, tags }) => {
             </li>
           ))
         )}
-        <p>Tägien aktiiviset ajat:</p>
+        <li style={{marginTop: "20px"}}><strong>Tägien aktiiviset ajat:</strong></li>
         {tagTotalTimes.length === 0 ? (
           <li>Ei aktiivisuutta valitulla aikavälillä</li>
         ) : (

@@ -70,22 +70,21 @@ const Barchart = ({ tasks, timestamps }) => {
         day.startOf("day"),
         day.endOf("day")
       );
-      "activeTime", activeTime);
       const totalHours = activeTime / 3600;
       return { day: dayjs(day).format("DD.MM.YYYY"), activeTime: totalHours };
     })
     .filter(({ activeTime }) => (skipInactiveDates ? activeTime > 0 : true));
 
   const chartSettings = {
-    xAxis: [
+    yAxis: [
       {
         label: "Aktiivisuusaika tunteina",
         min: 0,
         max: 24,
       },
     ],
-    width: 450,
-    height: 200 + activeTimePerDay.length * 50,
+    width: 100 + activeTimePerDay.length * 50,
+    height: 500,
   };
 
   const valueFormatter = (value) =>
@@ -115,13 +114,12 @@ const Barchart = ({ tasks, timestamps }) => {
           />
         )}
       </div>
-      {selectedTask && (
+      {selectedTask && activeTimePerDay.length > 0 && (
         <Chart
           dataset={activeTimePerDay}
-          yAxis={[{ scaleType: "band", dataKey: "day" }]}
+          xAxis={[{ scaleType: "band", dataKey: "day", label: "Päivä" }]}
           series={[{ dataKey: "activeTime", valueFormatter }]}
-          sx={{ margin: 5 }} // y-axis label is cutting off a bit every time when the chart height increases. Margin makes it visible.
-          layout="horizontal"
+          layout="vertical"
           {...chartSettings}
         />
       )}
