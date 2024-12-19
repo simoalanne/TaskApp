@@ -12,14 +12,12 @@ export const deleteTask = async (
       const taskPos = prevTasks.find(
         (task) => task.id === taskId
       ).additional_data;
-      console.log("taskPos", taskPos);
       return prevTasks
         .filter((task) => task.id !== taskId)
         .map((task) => {
           if (task.additional_data > taskPos) {
             task.additional_data -= 1;
             editData(`/tasks/${task.id}`, task);
-            console.log("reduced taskPos by 1 for task with name", task.name);
           }
           return task;
         });
@@ -27,7 +25,6 @@ export const deleteTask = async (
     const deletableTimestamps = timestamps.filter(
       (stamp) => stamp.task === taskId
     );
-    console.log("deletableTimestamps", deletableTimestamps);
     await Promise.all(
       deletableTimestamps.map((stamp) => deleteData(`/timestamps/${stamp.id}`))
     );
@@ -45,12 +42,6 @@ export const updateTimeStamps = async (
   setTimestamps
 ) => {
   type = type === false ? 1 : 0;
-  console.log(
-    "timestamps updated with the following data:",
-    timestamp,
-    task,
-    type
-  );
   try {
     const id = await addData("/timestamps", {
       timestamp,
@@ -101,7 +92,6 @@ export const getTimestamps = (task, timestamps) => {
     taskTimestamps.length > 0
       ? taskTimestamps[taskTimestamps.length - 1].type
       : false;
-  console.log("getTimestamps returning", taskTimestamps);
   return taskTimestamps;
 };
 

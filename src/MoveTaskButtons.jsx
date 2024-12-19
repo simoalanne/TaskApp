@@ -68,7 +68,6 @@ const MoveTaskButtons = ({
   This is because the moving wont work as expected when tasks are filtered
   because filtering does not change the state of the tasks array. */
   if (areTasksFiltered.length > 0) {
-    console.log("Tasks are filtered so moving tasks up and down is disabled");
     return <p> Filteröinti käytössä, joten tehtävää ei voi liikuttaa </p>;
   }
 

@@ -39,23 +39,18 @@ const Tasks = ({
     const newTags = tagNames.filter(
       (tagName) => !tags.some((tag) => tag.name === tagName)
     );
-    console.log("found", newTags.length, "new tags to add:", newTags);
+    
     const res = await Promise.all(
       newTags.map((tagName) => addData("/tags", { name: tagName }))
     );
 
-    console.log("database raw response:", res);
     const newTagsIds = res.map((tag) => tag.id);
-
-    console.log("datbase responded with new tag ids:", newTagsIds);
 
     const newTagObjects = newTagsIds.map((tagId, index) => ({
       id: tagId,
       name: newTags[index],
     }));
     const updatedTags = [...tags, ...newTagObjects];
-    console.log("On addNewtasks, updated tags are:", updatedTags);
-    console.log("On addNewtasks, newTagsIds are:", newTagsIds);
     setTags(updatedTags);
     return updatedTags;
   };
@@ -65,7 +60,6 @@ const Tasks = ({
       const tagId = tags.find((tag) => tag.name === tagName)?.id;
       await deleteData(`/tags/${tagId}`);
       setTags((prevTags) => prevTags.filter((tag) => tag.id !== tagId));
-      console.log("deleted tag with id:", tagId);
       const updatedTagsString = tasks.map((task) =>
         task.tags
           .split(",")
@@ -73,7 +67,6 @@ const Tasks = ({
           .filter((taskTagId) => taskTagId !== tagId)
           .join(",")
       );
-      console.log("updatedTagsStrings are", updatedTagsString);
       // Update the tags strings in the tasks where it has changed
       await Promise.all(
         tasks.map(
@@ -119,7 +112,6 @@ const Tasks = ({
 
   const editTask = async (task) => {
     try {
-      console.log("editing task:", task);
       await editData(`/tasks/${editedTask.id}`, task);
       const tasksCopy = [...tasks];
       const taskIndex = tasksCopy.findIndex((t) => t.id === editedTask.id);
@@ -139,7 +131,6 @@ const Tasks = ({
    */
   const addOrEditTask = async (task) => {
     const updatedTags = await addNewTags(task.tagNames);
-    console.log("copy of tags state is", updatedTags);
 
     const tagIds = task.tagNames.map((tagName) =>
       updatedTags.find((tag) => tag.name === tagName)
@@ -148,7 +139,6 @@ const Tasks = ({
       .map((tag) => tag.id)
       .sort((a, b) => a - b)
       .join(",");
-    console.log("tagIdsString is", tagIdsString);
     if (editedTask) {
       await editTask({
         name: task.name,
@@ -167,7 +157,6 @@ const Tasks = ({
   };
 
   const closeDialog = () => {
-    console.log("close dialog");
     setTaskDialogOpen(false);
     setEditedTask(null);
   };
@@ -207,8 +196,6 @@ const Tasks = ({
     ...new Set(tasks.flatMap((task) => getTagNames(task, tags))),
   ].filter(Boolean);
 
-  console.log("used tags are", usedTags);
-
   const filteredTasks = tasks.filter((task) =>
     filtered.every((tag) => getTagNames(task, tags).includes(tag))
   );
@@ -221,15 +208,10 @@ const Tasks = ({
     return { ...task, additional_data: position === "" ? index : position };
   });
 
-  console.log("position added tasks are", positionAddedTasks);
-
   const sortedTasks = positionAddedTasks.sort(
     (a, b) => Number(a.additional_data) - Number(b.additional_data)
   );
 
-  console.log("sorted tasks are", sortedTasks);
-
-  console.log("theme in tasks.jsx is", theme.palette);
   return (
     <>
       <div style={{ display: "flex" }}>

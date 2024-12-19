@@ -48,7 +48,6 @@ const ActivityIntervals = ({ tasks, timestamps }) => {
   };
 
   const correspondingTask = tasks.find((task) => task.name === selectedTask);
-  console.log("timestampit on nyt", timestamps);
   return (
     <div className="task-intervals-container">
       <div className="task-intervals-controls">

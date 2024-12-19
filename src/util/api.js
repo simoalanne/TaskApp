@@ -47,7 +47,6 @@ export const addData = async (url, data) => {
  */
 export const deleteData = async (url) => {
   try {
-    console.log("deleting data at", url);
     await axios.delete(`${API_BASE_URL}${url}`);
   } catch (err) {
     console.error(`Failed to delete data at ${url}:`, err);
@@ -66,7 +65,6 @@ export const deleteData = async (url) => {
 export const editData = async (url, data) => {
   try {
     const res = await axios.put(`${API_BASE_URL}${url}`, data);
-    console.log("updated data with PUT:", res.data);
     return res.data;
   } catch (err) {
     console.error(`Failed to update data at ${url}:`, err);

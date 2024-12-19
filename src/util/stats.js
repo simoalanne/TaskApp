@@ -10,7 +10,6 @@ dayjs.extend(isBetween);
  * @example createIntervalArray(getTimestamps(task, timestamps)) // task is a task object with id, timestamps contains all timestamps
  */
 export const createIntervalArray = (timestamps) => {
-  console.log("createIntervalArray timestamps", timestamps);
   let intervalArray = [];
   for (let i = 0; i < timestamps.length; i += 2) {
     const interval = timestamps.slice(i, i + 2).map((stamp) => stamp.timestamp);

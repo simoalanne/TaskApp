@@ -6,7 +6,6 @@ import Checkbox from "@mui/material/Checkbox";
 import { Tooltip } from "@mui/material";
 
 const ToggleAlternativeMode = ({ alternative, setAlternative }) => {
-  console.log("alternative in ToggleAlternativeMode:", alternative);
   return (
     <div style={{ marginTop: "16px" }}>
       <Tooltip

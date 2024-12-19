@@ -23,7 +23,8 @@ const ToggleTaskActivityButton = ({
 
   const handleChange = async () => {
     if (alternativeModeActive) {
-      if (!isActive) { // if the task is not active, then deactivate all other active tasks before activating the current task
+      if (!isActive) {
+        // if the task is not active, then deactivate all other active tasks before activating the current task
         // returns the tasks array with the current task removed and isActive field added that is true if the task is active
         const otherActiveTasks = tasks
           .filter((task) => task.id !== taskId)
@@ -46,7 +47,7 @@ const ToggleTaskActivityButton = ({
     setIsActive((prev) => {
       const newState = !prev;
       const timestamp = dayjs().format("YYYY-MM-DD HH:mm:ss.SSS");
-      console.log("timestamp on", timestamp);
+      "timestamp on", timestamp);
       updateTimeStamps(timestamp, taskId, newState, setTimestamps);
       return newState;
     });
@@ -54,7 +55,7 @@ const ToggleTaskActivityButton = ({
 
   return (
     <div className="toggleTaskButton">
-      <p>{isActive ? "Tehtävä Aktiivinen" : "Tehtävä Inaktiivinen"}</p>
+      <p>{isActive ? "Tehtävä Aktiivinen ✅" : "Tehtävä Inaktiivinen ❌"}</p>
       <Switch checked={isActive} onChange={handleChange} />
     </div>
   );

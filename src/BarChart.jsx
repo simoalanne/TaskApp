@@ -20,11 +20,9 @@ const Barchart = ({ tasks, timestamps }) => {
   const [skipInactiveDates, setSkipInactiveDates] = useState(false);
 
   const createDayIntervals = () => {
-    console.log("selectedTask", selectedTask);
     const intervalArray = createIntervalArray(
       getTimestamps(selectedTask, timestamps)
     );
-    console.log("intervalArray", intervalArray);
     const dayIntervals = [];
     let currentDate = startDate.clone();
 
@@ -72,7 +70,7 @@ const Barchart = ({ tasks, timestamps }) => {
         day.startOf("day"),
         day.endOf("day")
       );
-      console.log("activeTime", activeTime);
+      "activeTime", activeTime);
       const totalHours = activeTime / 3600;
       return { day: dayjs(day).format("DD.MM.YYYY"), activeTime: totalHours };
     })

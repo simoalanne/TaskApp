@@ -18,15 +18,12 @@ const TotalActiveTimes = ({ tasks, timestamps, tags }) => {
     const timeStampsArray = tasks.map((task) =>
       getTimestamps(task, timestamps)
     );
-    console.log("tehtävien aikaleimat", timeStampsArray);
     const intervalArrays = timeStampsArray.map((timeStamps) =>
       createIntervalArray(timeStamps)
     );
-    console.log("aikavälit", intervalArrays);
     const taskTotalTimes = intervalArrays.map((intervalArray) =>
       getTotalActiveTime(intervalArray, startTime, endTime)
     );
-    console.log("tehtävien kokonaisajat", taskTotalTimes);
     return taskTotalTimes;
   };
 

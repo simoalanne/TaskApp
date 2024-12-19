@@ -4,7 +4,6 @@ import ChangeTheme from "./ChangeTheme";
 import ToggleAlternativeMode from "./ToggleAlternativeMode";
 
 const Settings = ({ theme, setTheme, open, setOpen, alternative, setAlternative }) => {
-  console.log("open in settings:", open);
   return (
     <Drawer anchor="left" open={open} onClose={() => setOpen(false)}>
       <Box sx={{ width: 250, padding: 2 }}>

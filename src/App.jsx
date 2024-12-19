@@ -20,7 +20,6 @@ import { fetchData, editData } from "./util/api";
 
 // CSS-file
 import "./App.css";
-import { Button } from "@mui/material";
 
 /**
  * The main component for the application.
@@ -49,7 +48,6 @@ const App = () => {
   const fetchAndSet = async (url, setFunction) => {
     try {
       const data = await fetchData(url);
-      console.log(`Fetched data from ${url}:`, JSON);
       setFunction((prevData) => [...prevData, ...data]);
     } catch (err) {
       console.error(`Failed to fetch from ${url}:`, err);
@@ -59,7 +57,6 @@ const App = () => {
   const fetchOptions = async () => {
     try {
       const data = await fetchData("/options");
-      console.log("Fetched options:", data);
       setTheme(data[0].theme === "default" ? "light" : data[0].theme);
       setAlternativeMode(data[0].alternative);
     } catch (err) {
@@ -90,14 +87,12 @@ const App = () => {
     return null;
   }
 
-  const setThemeCustom = (theme) => {
-    console.log("new theme is", theme);
+  const setAndSaveTheme = (theme) => {
     setTheme(theme);
     editData("/options/1", { theme, alternative: alternativeMode });
   };
 
-  const setAlternativeModeCustom = (alternative) => {
-    console.log("new alternative mode is", alternative);
+  const setAndSaveAlternativeMode = (alternative) => {
     setAlternativeMode(alternative);
     editData("/options/1", { theme, alternative });
   };
@@ -166,11 +161,11 @@ const App = () => {
           {/* Settings Drawer */}
           <Settings
             theme={theme}
-            setTheme={setThemeCustom}
+            setTheme={setAndSaveTheme}
             open={settingsDrawerOpen}
             setOpen={setSettingsDrawerOpen}
             alternative={alternativeMode}
-            setAlternative={setAlternativeModeCustom}
+            setAlternative={setAndSaveAlternativeMode}
           />
         </div>
       </BrowserRouter>

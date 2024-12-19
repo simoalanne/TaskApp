@@ -17,7 +17,6 @@ const DateTimeRangePicker = ({
 
   useEffect(() => {
     if (startTime && endTime && startTime.isAfter(endTime)) {
-      console.log("invalid time range");
       setEndTime(startTime);
     }
   }, [startTime, endTime, setStartTime, setEndTime]);

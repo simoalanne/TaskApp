@@ -11,9 +11,8 @@ import {
 } from "@mui/material";
 import TuneIcon from "@mui/icons-material/Tune"; // best icon that represents filtering
 
-// this changes the state of the parent component to reflect the filtering.
-// stupidly coded because this should have returned the filtered tasks instead of changing the state of the parent component.
-const TaskFilterDialog = ({ tags, setFiltering, tasks }) => {
+// this changes the state of the parent component to update the filtering
+const TaskFilterDialog = ({ tags, setFiltering }) => {
   const [selectedTags, setSelectedTags] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -65,11 +64,13 @@ const TaskFilterDialog = ({ tags, setFiltering, tasks }) => {
           </Box>
         </DialogContent>
         <DialogActions>
-          <Button disabled={selectedTags.length === 0} onClick={() => {
-            setFiltering([]);
-            setSelectedTags([]);
-          }
-          }>
+          <Button
+            disabled={selectedTags.length === 0}
+            onClick={() => {
+              setFiltering([]);
+              setSelectedTags([]);
+            }}
+          >
             Poista kaikki filterit
           </Button>
           <Button onClick={() => setIsOpen(false)} color="secondary">
