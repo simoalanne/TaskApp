@@ -1,0 +1,78 @@
+/* Container styles */
+.lightContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.darkContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.taskNameLight,
+.taskNameDark {
+  text-wrap: nowrap;
+  overflow: hidden;
+  border-radius: 4px;
+  font-size: 1.25rem;
+}
+
+.taskNameLight {
+  background-color: #d3eaff;
+  color: black;
+}
+
+.taskNameDark {
+  background-color: #375a7f;
+  /* Muted dark blue/teal */
+  color: #ecf0f1;
+  /* Soft white for better readability */
+}
+
+/* Task Button styles */
+.lightTasks,
+.darkTasks {
+  margin: 20px;
+  text-align: center;
+  height: 450px;
+  width: 300px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.lightTasks {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.darkTasks {
+  background-color: #333;
+  color: white;
+}
+
+.noTasks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.taskButtons {
+  display: flex;
+  flex-direction: column;
+}
+
+/* General List Styling */
+li {
+  list-style: none;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}

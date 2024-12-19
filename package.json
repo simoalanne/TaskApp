@@ -13,12 +13,17 @@
     "@emotion/react": "^11.13.5",
     "@emotion/styled": "^11.13.5",
     "@mui/icons-material": "^6.1.9",
-    "@mui/material": "^6.1.9",
+    "@mui/material": "^6.1.10",
+    "@mui/x-charts": "^7.23.2",
+    "@mui/x-date-pickers": "^7.23.0",
+    "array-move": "^4.0.0",
     "axios": "^1.7.8",
-    "date-fns": "^4.1.0",
+    "dayjs": "^1.11.13",
+    "framer-motion": "^11.13.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^7.0.1"
+    "react-router-dom": "^7.0.1",
+    "recharts": "^2.14.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",

@@ -1,0 +1,13 @@
+.totalTimesList li {
+  padding: 10px 15px;
+  margin: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.noTasksText {
+  font-size: 1.1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 12px;
+  color: #ddd;
+}

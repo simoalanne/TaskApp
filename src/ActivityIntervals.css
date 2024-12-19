@@ -1,0 +1,23 @@
+
+
+.task-intervals-controls {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+.task-intervals-list {
+  margin-top: 20px;
+}
+
+.task-intervals-list ul {
+  list-style-type: none;
+}
+
+.task-intervals-list li {
+  padding: 10px 15px;
+  margin: 0;
+  border-bottom: 1px solid #ddd;
+}
